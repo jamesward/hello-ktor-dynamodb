@@ -1,3 +1,6 @@
+import io.ktor.server.application.Application
+import io.ktor.server.cio.CIO
+import io.ktor.server.engine.embeddedServer
 import org.testcontainers.containers.localstack.LocalStackContainer
 import org.testcontainers.utility.DockerImageName
 
@@ -21,6 +24,5 @@ fun main() {
 //
 //        }
 
-
-    server.start(wait = true)
+    embeddedServer(CIO, port = 8080, module = Application::module).start(wait = true)
 }

@@ -7,15 +7,19 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.request.*
+import model.Bar
 
 val bars = mutableListOf<Bar>()
 
-val server = embeddedServer(CIO, port = 8080) {
+fun Application.module() {
     install(ContentNegotiation) {
         json()
     }
 
     routing {
+        get ("/") {
+            call.respondText("hello, world")
+        }
         get ("/bars") {
             call.respond(bars)
         }
@@ -29,5 +33,5 @@ val server = embeddedServer(CIO, port = 8080) {
 }
 
 fun main() {
-    server.start(wait = true)
+    embeddedServer(CIO, port = 8080, module = Application::module).start(wait = true)
 }

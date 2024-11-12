@@ -1,7 +1,7 @@
 plugins {
     kotlin("jvm") version "2.0.21"
     application
-    //id("aws.sdk.kotlin.hll.dynamodbmapper.schema.generator") version "1.3.70-beta"
+    id("aws.sdk.kotlin.hll.dynamodbmapper.schema.generator") version "1.3.70-beta"
     kotlin("plugin.serialization") version "2.0.21"
 }
 
